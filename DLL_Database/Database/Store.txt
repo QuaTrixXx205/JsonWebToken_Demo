@@ -1,0 +1,75 @@
+ALTER proc [dbo].[spDanhMuc_ChuDeDelete]
+	@MaCD int,
+	@UserName varchar(30)
+as
+begin try	
+	-- Kiểm tra người dùng có được quyền thêm dữ liệu không
+	if not exists (select * from tbl_Account where UserName = @UserName and AllowDelete = 1)
+	begin
+		raiserror(N'Người dùng không có quyền xoá dữ liệu. Vui lòng kiểm tra lại', 16, 1)
+		return
+	end
+
+	delete	tbl_ChuDe
+	where	MaCD = @MaCD
+
+	select	errMsg = N'Xoá chủ đề thành công'
+end try
+begin catch
+	declare @err nvarchar(1000) = ERROR_MESSAGE()
+	raiserror (@err, 16, 1)
+end catch
+
+ALTER proc [dbo].[spDanhMuc_ChuDeUpdate]
+	@MaCD int,
+	@TenChuDe nvarchar(50),
+	@UserName varchar(30)
+as
+begin try	
+	-- Thêm mới chủ đề
+	if @MaCD = 0
+	begin
+		-- Kiểm tra người dùng có được quyền thêm dữ liệu không
+		if not exists (select * from tbl_Account where UserName = @UserName and AllowInsert = 1)
+		begin
+			raiserror(N'Người dùng không có quyền thêm dữ liệu. Vui lòng kiểm tra lại', 16, 1)
+			return
+		end
+
+		if exists (select * from tbl_ChuDe where TenChuDe = @TenChuDe)
+		begin
+			raiserror(N'Chủ đề này đã tồn tại trong hệ thống. Vui lòng kiểm tra lại', 16, 1)
+			return
+		end
+
+		insert into tbl_ChuDe (TenChuDe)
+		values (@TenChuDe)
+
+		select errMsg = N'Thêm chủ đề thành công'
+	end
+	else
+	begin 
+		-- Kiểm tra người dùng có được quyền chỉnh sửa dữ liệu không
+		if not exists (select * from tbl_Account where UserName = @UserName and AllowUpdate = 1)
+		begin
+			raiserror(N'Người dùng không có quyền chỉnh sửa dữ liệu. Vui lòng kiểm tra lại', 16, 1)
+			return
+		end
+
+		if exists (select * from tbl_ChuDe where TenChuDe = @TenChuDe and MaCD <> @MaCD)
+		begin
+			raiserror(N'Chủ đề này đã tồn tại trong hệ thống. Vui lòng kiểm tra lại', 16, 1)
+			return
+		end
+
+		update	tbl_ChuDe
+		set		TenChuDe = @TenChuDe
+		where	MaCD = @MaCD
+
+		select	errMsg = N'Chỉnh sửa thông tin chủ đề thành công'
+	end
+end try
+begin catch
+	declare @err nvarchar(1000) = ERROR_MESSAGE()
+	raiserror (@err, 16, 1)
+end catch
