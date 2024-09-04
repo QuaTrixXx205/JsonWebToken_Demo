@@ -1,4 +1,4 @@
-ALTER proc [dbo].[spDanhMuc_ChuDeDelete]
+CREATE proc [dbo].[spDanhMuc_ChuDeDelete]
 	@MaCD int,
 	@UserName varchar(30)
 as
@@ -20,7 +20,17 @@ begin catch
 	raiserror (@err, 16, 1)
 end catch
 
-ALTER proc [dbo].[spDanhMuc_ChuDeUpdate]
+CREATE proc [dbo].[spDanhMuc_ChuDeSelectAll]
+as
+begin try	
+	select * from tbl_ChuDe
+end try
+begin catch
+	declare @err nvarchar(1000) = ERROR_MESSAGE()
+	raiserror (@err, 16, 1)
+end catch
+
+CREATE proc [dbo].[spDanhMuc_ChuDeUpdate]
 	@MaCD int,
 	@TenChuDe nvarchar(50),
 	@UserName varchar(30)

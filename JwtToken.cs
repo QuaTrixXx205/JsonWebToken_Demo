@@ -8,7 +8,6 @@ public class JwtToken
 {
     private static readonly byte[] KeyBytes = GenerateKey();
 
-    // Generate a secure key (64 bytes) for HS512
     private static byte[] GenerateKey()
     {
         using (var rng = RandomNumberGenerator.Create())
@@ -43,4 +42,33 @@ public class JwtToken
             throw new Exception("Error generating token: " + ex.Message);
         }
     }
+
+    public bool ValidateToken(string token, out ClaimsPrincipal? claimsPrincipal)
+    {
+        claimsPrincipal = null;
+        try
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = KeyBytes;
+            var validationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuer = true,
+                ValidIssuer = "http://localhost",
+                ValidateAudience = true,
+                ValidAudience = "bookstore api",
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero // Optional: Adjusts the time tolerance
+            };
+
+            claimsPrincipal = tokenHandler.ValidateToken(token, validationParameters, out _);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
 }
+
