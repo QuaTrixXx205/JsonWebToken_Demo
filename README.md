@@ -1,3 +1,12 @@
+#Install FE
+```
+npm install -g @vue/cli
+
+vue create FE_Demo
+
+vue add vuetify
+```
+
 # JsonWebToken_Demo
 
 ## Step 1: Insert a User into the Database
