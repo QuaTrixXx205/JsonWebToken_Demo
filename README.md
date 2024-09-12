@@ -5,7 +5,7 @@
 Run the following SQL command to insert a user into the `tbl_Account` table:
 
 ```sql
-INSERT INTO tbl_Account (UserName, PassWord)
+INSERT INTO tbl_Account (UserName, UserPass)
 VALUES ('Quang', pwdencrypt('2053'))
 ```
 
