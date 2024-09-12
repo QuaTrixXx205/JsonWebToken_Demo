@@ -1,3 +1,16 @@
+#Install FE
+```
+npm install -g @vue/cli
+
+vue create fe_demo
+
+vue add vuetify
+
+npm add vue router
+
+npm add axios
+```
+
 # JsonWebToken_Demo
 
 ## Step 1: Insert a User into the Database
@@ -5,7 +18,7 @@
 Run the following SQL command to insert a user into the `tbl_Account` table:
 
 ```sql
-INSERT INTO tbl_Account (UserName, PassWord)
+INSERT INTO tbl_Account (UserName, UserPass)
 VALUES ('Quang', pwdencrypt('2053'))
 ```
 
