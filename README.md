@@ -2,9 +2,13 @@
 ```
 npm install -g @vue/cli
 
-vue create FE_Demo
+vue create fe_demo
 
 vue add vuetify
+
+npm add vue router
+
+npm add axios
 ```
 
 # JsonWebToken_Demo
