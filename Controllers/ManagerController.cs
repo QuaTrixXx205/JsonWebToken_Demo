@@ -38,7 +38,6 @@ namespace JWT_Demo.Controllers
                     return (true, claims);
                 }
             }
-
             return (false, null); // Invalid token
         }
 
@@ -47,15 +46,6 @@ namespace JWT_Demo.Controllers
         [Route("GetChuDe")]
         public async Task<ActionResult> GetChuDe()
         {
-            var (IsValid, Claims) = CheckAuth(Request);
-
-            if (!IsValid)
-            {
-                return Unauthorized(new { message = "Token is invalid or Authorization header is missing." });
-            }
-
-            var userName = Claims?.FindFirst(c => c.Type == ClaimTypes.Name)?.Value;
-
             return await _sqlHelper.ExecuteSqlQuery("spDanhMuc_ChuDeSelectAll");
         }
 

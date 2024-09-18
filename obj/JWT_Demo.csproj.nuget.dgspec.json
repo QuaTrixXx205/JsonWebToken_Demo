@@ -1,26 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LHUser\\Downloads\\JsonWebToken_Demo\\JWT_Demo.csproj": {}
+    "C:\\Users\\Admin\\Desktop\\JsonWebToken_Demo\\JWT_Demo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LHUser\\Downloads\\JsonWebToken_Demo\\JWT_Demo.csproj": {
+    "C:\\Users\\Admin\\Desktop\\JsonWebToken_Demo\\JWT_Demo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LHUser\\Downloads\\JsonWebToken_Demo\\JWT_Demo.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\JsonWebToken_Demo\\JWT_Demo.csproj",
         "projectName": "JWT_Demo",
-        "projectPath": "C:\\Users\\LHUser\\Downloads\\JsonWebToken_Demo\\JWT_Demo.csproj",
-        "packagesPath": "C:\\Users\\LHUser\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LHUser\\Downloads\\JsonWebToken_Demo\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\JsonWebToken_Demo\\JWT_Demo.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\JsonWebToken_Demo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\LHUser\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.nuget.org/api/v2": {}
         },
         "frameworks": {
           "net8.0": {
@@ -91,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
